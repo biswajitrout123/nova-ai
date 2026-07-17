@@ -1,0 +1,49 @@
+//  HERE WE WRITE HOW FRONTEND AND BACKEND WILL INTERRACT
+import axios from "axios"
+
+const api = axios.create({
+    baseURL: "http://localhost:3000",
+    withCredentials: true
+})
+
+export async function register({ username, email, password }) {
+
+    try {
+        const response = await api.post('/api/auth/register', {
+            username, email, password
+        })
+        return response.data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export async function login({ email, password }) {
+    try {
+        const response = api.post("/api/login", {
+            email, password
+        })
+        return response.data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export async function logout() {
+
+    try {
+        const response = await api.get('/api/logout')
+        return response.data
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export async function getMe(params) {
+    try {
+        const response = await api.get('/api/auth/get-me')
+        return response.data
+    } catch (err) {
+        console.log(err);
+    }
+}
