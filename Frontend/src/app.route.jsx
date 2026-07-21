@@ -1,25 +1,26 @@
-import { createBrowserRouter } from "react-router-dom";
-import Login from "./auth/pages/Login";
-import Register from "./auth/pages/Register";
-// 1. Make sure to import your Protected component
-import Protected from "./auth/components/Protected"; 
+import { createBrowserRouter } from "react-router";
+import Login from "./features/auth/pages/Login";
+import Register from "./features/auth/pages/Register";
+import Protected from "./features/auth/components/Protected";
+import Home from "./features/interview/pages/Home";
+import Interview from "./features/interview/pages/Interview";
+
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    // 2. Use a single "/" route and wrap the element here
-    element: (
-      <Protected>
-        <h1>Welcome to the Home Page!</h1>
-      </Protected>
-    ),
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-]);
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/register",
+        element: <Register />
+    },
+    {
+        path: "/",
+        element: <Protected><Home /></Protected>
+    },
+    {
+        path:"/interview/:interviewId",
+        element: <Protected><Interview /></Protected>
+    }
+])
