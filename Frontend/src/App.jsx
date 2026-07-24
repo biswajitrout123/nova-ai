@@ -1,18 +1,16 @@
-import React from "react";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./app.route";
-import { AuthProvider } from "./auth/auth..context";
-import { InterviewProvider } from "./interview/interview.context";
+import { RouterProvider } from "react-router";
+import { router } from "./app.route.jsx";
+import { AuthProvider } from "./auth/auth.context.jsx";
+import { InterviewProvider } from "./interview/interview.context.jsx";
 
-const App = () => {
+function App() {
   return (
     <AuthProvider>
       <InterviewProvider>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </InterviewProvider>
     </AuthProvider>
   );
-
-};
+}
 
 export default App;
